@@ -79,7 +79,7 @@ Menu Structure:
 
 ### Pong Heartbeat
 
-Pong's Heartbeat requires a couple of things, first it requires the heartbeat check [here](#heartbeat-events), Global event timer [here](#hrtCheck), 
+Pong's Heartbeat requires a couple of things, first it requires the heartbeat check <a href="#hrtCheck">here</a>, Global event timer <a href="#GlTime">here</a>, 
 
 ### Pong Buttons
 
@@ -177,8 +177,7 @@ while True:
         hrtFnCh("H",3)
 ```
 
-**Heartbeat Check**<div id="hrtCheck"></div>  
-
+**Heartbeat Check**<div id="hrtCheck"></div>
 Firstly inorder to track the time difference between each event we save the heartbeat values inside of the class `hrtValues`. The function `hrtFnCh(n,z)` (or Heartbeat Function Check), is what checks if the heartbeat should be fired again, I am going to break it down here.
 
 The condtion `math.trunc((time.ticks_ms()/1000)*z) > getattr(hrtValues,n)`, does a few things, `time.ticks_ms()` returns the amount of time in milliseconds since the device has been booted: 
@@ -199,7 +198,7 @@ Now understand that since we are multiplying these together it is the opposite, 
 
 Finaly we take this number `16`, and if it is greater than `getattr(hrtValues,n)` (or the hearbeat value stored in hrtValues, our case it is `"H"`). and if so it will set the global value to the new heartbeat number, and lastly it will append the event name to the Event Hand List, to be processed.
 
-**Heartbeat Wrap up/Global timer**  
+**Heartbeat Wrap up/Global timer**<div id="GlTime"></div>
 The rest of the code is self-explanatory, PongA is the boolean variable that is active when the process/game is active, the itialization of the game sets the global hearbeat value of `"H"` to 0, incase it was started from boot. And inside the while true loop, if pong is active, then it will run the heart function check; which checks if the hearbeat should be fired, and adds to the event list automatically due to the function.
 
 ## Global Variables / Variable Sharing
